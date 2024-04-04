@@ -8,7 +8,9 @@ export default function Home({navigation}) {
     id: 1,
     title:"Opens Arms (feat. Travis Scott)",
     group:"SZA",
-    album_image:"https://upload.wikimedia.org/wikipedia/pt/c/c8/SZA_-_SOS.png"
+    album_image:"https://upload.wikimedia.org/wikipedia/pt/c/c8/SZA_-_SOS.png",
+    year: 2022,
+    genre: "Hip hop, Música pop, R&B contemporâneo"
   };
   return (
     <View style={styles.container}>

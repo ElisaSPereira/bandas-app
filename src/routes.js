@@ -1,0 +1,67 @@
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Home from "./screens/Home";
+import MusicDetails from "./screens/MusicDetails";
+import Search from "./screens/Search";
+import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
+
+const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+function HomeStackeScreen(){
+    return(
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Home" component={Home}/>
+            <Stack.Screen name="Details" component={MusicDetails}/>
+        </Stack.Navigator>
+    );
+}
+
+function MainTabScreen(){
+    return(
+        <Tab.Navigator screenOptions={{
+            headerShown: false,
+            tabBarShowLabel: false,
+            tabBarActiveTintColor: "#FFF",
+            tabBarInactiveTintColor: "lightgray",
+            tabBarStyle: { backgroundColor: "#212121"},
+        }}>
+            <Tab.Screen 
+                name="HomeStacke" 
+                component={HomeStackeScreen} 
+                options={{
+                    title: "Home",
+                    tabBarIcon: ({ color }) => (
+                     <MaterialCommunityIcons 
+                        name="home-variant" 
+                        size={36} 
+                        color={color}
+                        />
+                    ),
+                }}
+            />
+            <Tab.Screen 
+                name="Search" 
+                component={Search}
+                options={{
+                    title: "Pesquisar",
+                    tabBarIcon: ({ color }) => (
+                     <MaterialIcons 
+                        name="search" 
+                        size={36} 
+                        color={color}
+                        />
+                    ),
+                }}
+            />
+        </Tab.Navigator>
+    );
+}
+
+export default function Routes() {
+    return(
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="MainTab" component={MainTabScreen}/>
+        </Stack.Navigator>
+    );
+}
